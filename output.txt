@@ -1,0 +1,33 @@
+begin process p1
+recv_B p2 m1 (0,0,0,0)
+recv_A p2 m1 (0,1,0,0)
+p1 send m2 (1,1,0,0)
+recv_B p4 m3 (1,1,0,0)
+recv_A p4 m3 (1,1,0,1)
+end process p1
+ 
+begin process p2
+p2 send m1 (0,1,0,0)
+recv_B p1 m2 (0,1,0,0)
+recv_A p1 m2 (1,1,0,0)
+recv_B p4 m3 (1,1,0,0)
+recv_A p4 m3 (1,1,0,1)
+end process p2
+ 
+begin process p3
+recv_B p1 m2 (0,0,0,0)
+recv_B p4 m3 (0,0,0,0)
+recv_B p2 m1 (0,0,0,0)
+recv_A p2 m1 (0,1,0,0)
+recv_A p1 m2 (1,1,0,0)
+recv_A p4 m3 (1,1,0,1)
+end process p3
+ 
+begin process p4
+recv_B p1 m2 (0,0,0,0)
+recv_B p2 m1 (0,0,0,0)
+recv_A p2 m1 (0,1,0,0)
+recv_A p1 m2 (1,1,0,0)
+p4 send m3 (1,1,0,1)
+end process p4
+ 
